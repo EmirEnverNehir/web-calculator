@@ -1,4 +1,4 @@
-// Get all number buttons, operation buttons, and display element
+ 
 const nums = document.querySelectorAll(".num");
 const plus = document.getElementById("plus");
 const answer = document.getElementById("answer");
@@ -6,18 +6,18 @@ const equal = document.getElementById("e");
 const clear = document.getElementById("clear");
 const minus = document.getElementById("minus");
 
-// Calculator state variables
+ 
 let n1 = "";
 let n2 = "";
 let isSecond = false;
-let operation = null; // Track which operation is selected
+let operation = null;  
 
-// Handle number button clicks
+ 
 nums.forEach(btn => {
   btn.addEventListener('click', function() {
     const digit = this.textContent;
     
-    // Prevent multiple leading zeros
+    
     if ((!isSecond && n1 === "0") || (isSecond && n2 === "0")) {
       return;
     }
@@ -32,25 +32,24 @@ nums.forEach(btn => {
   });
 });
 
-// Handle plus operation
+ 
 plus.addEventListener('click', function() {
   if (n1 !== "") {
     isSecond = true;
     operation = "+";
-    answer.textContent = "0"; // Reset display for second number
+    answer.textContent = "0"; 
   }
 });
 minus.addEventListener('click', function() {
   if (n1 !== "") {
     isSecond = true;
     operation = "-";
-    answer.textContent = "0"; // Reset display for second number
+    answer.textContent = "0"; 
   }
 });
 
 
-
-// Handle equal operation
+ 
 equal.addEventListener('click', function() {
   if (n1 !== "" && n2 !== "" && operation) {
     let result;
@@ -71,7 +70,7 @@ equal.addEventListener('click', function() {
     
     answer.textContent = result;
     
-    // Reset for next calculation
+   
     n1 = result.toString();
     n2 = "";
     isSecond = false;
@@ -81,7 +80,7 @@ equal.addEventListener('click', function() {
   }
 });
 
-// Handle clear operation
+ 
 clear.addEventListener('click', function() {
   n1 = "";
   n2 = "";
